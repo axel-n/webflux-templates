@@ -11,6 +11,7 @@ import org.springframework.test.web.reactive.server.EntityExchangeResult;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -38,5 +39,21 @@ public class BookControllerTest {
 
         assertNotNull(books);
         assertTrue(books.size() > 0);
+    }
+
+    @Test
+    public void bookStatistic() {
+        EntityExchangeResult<Map> result = webTestClient
+                .get().uri(rootApi + "/books/1/statistic")
+                .exchange()
+                .expectStatus().isOk()
+                .expectBody(Map.class)
+                .returnResult();
+
+        Map<String, Object> map = result.getResponseBody();
+
+        assertNotNull(map);
+        assertNotNull(map.get("downloads"));
+        assertNotNull(map.get("views"));
     }
 }

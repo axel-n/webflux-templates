@@ -6,5 +6,4 @@
 
 ## TODO
 - upload files
-- combine data in resources
 - data1.param -> load anotherData2(paramFromData1) -> collect

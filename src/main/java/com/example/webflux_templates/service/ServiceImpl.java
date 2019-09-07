@@ -23,4 +23,14 @@ public class ServiceImpl implements Service {
     public Mono<List<Book>> getAllBooks() {
         return Mono.just(books);
     }
+
+    @Override
+    public Mono<Long> getTotalDownloads(Long bookId) {
+        return Mono.just(42L);
+    }
+
+    @Override
+    public Mono<Long> getTotalNumberOfViews(Long bookId) {
+        return Mono.just(500L);
+    }
 }
